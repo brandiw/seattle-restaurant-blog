@@ -1,0 +1,23 @@
+<h2 class="text-center">New Post</h2>
+
+<form method="post" action="/articles">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" name="title" placeholder="topic of article" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label for="author">Author:</label>
+    <select name="authorId" class="form-control" id="author" required>
+      <% authors.forEach(function(a){ %>
+        <option value="<%=a.id%>">
+          <%= a.firstname %> <%= a.lastname %>
+        </option>
+      <% }); %>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="content">Content:</label>
+    <textarea name="content" class="form-control"></textarea>
+  </div>
+  <input type="submit" value="Create Article" class="btn btn-success">
+</form>

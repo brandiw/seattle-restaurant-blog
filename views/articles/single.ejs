@@ -1,0 +1,23 @@
+<h2 class="text-center"><%= result.title %></h2>
+<em>By <%= result.author.firstname %> <%= result.author.lastname %></em>
+<p>
+  <%= result.content %>
+</p>
+<em>Written on <%= moment(result.createdAt).calendar() %></em>
+<hr>
+<h3>Add Your Comments</h3>
+<form method="post" action="/comments">
+  <div class="form-group">
+    <label>Content</label>
+    <textarea name="content" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" placeholder="your name" name="name" class="form-control" required>
+  </div>
+  <input type="hidden" name="articleId" value="<%= result.id %>">
+  <input type="submit" class="btn btn-info">
+</form>
+<hr>
+<h3>Previous Comments</h3>
+<p>to do...</p>
