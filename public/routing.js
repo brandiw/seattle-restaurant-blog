@@ -9,3 +9,13 @@ $('.delete-link').click(function(e){
     window.location.href = '/articles';
   });
 });
+
+$('#delete-tag').click(function(e){
+  e.preventDefault();
+  $.ajax({
+    url: $(this).attr('href'),
+    method: 'delete'
+  }).success(function(response){
+    window.location.href = '/tags';
+  });
+});

@@ -3,8 +3,13 @@ var router = express.Router();
 var db = require('../models');
 
 router.post('/', function(req, res){
-  console.log('req.body', req.body);
-  res.send('comments post route stub');
+  db.comment.create({
+    name: req.body.name,
+    articleId: req.body.articleId,
+    content: req.body.content
+  }).then(function(createdComment){
+    res.redirect('/articles/' + createdComment.articleId);
+  });
 });
 
 module.exports = router;

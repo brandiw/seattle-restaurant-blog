@@ -3,6 +3,11 @@
 <p>
   <%= result.content %>
 </p>
+<div>
+  <% result.tags.forEach(function(t){ %>
+    <a href="/tags/<%= t.id %>">#<%= t.content %></a>
+  <% }); %>
+</div>
 <em>Written on <%= moment(result.createdAt).calendar() %></em>
 <hr>
 <h3>Add Your Comments</h3>
@@ -19,5 +24,17 @@
   <input type="submit" class="btn btn-info">
 </form>
 <hr>
-<h3>Previous Comments</h3>
-<p>to do...</p>
+<% if(result.comments && result.comments.length > 0) { %>
+  <h3>Previous Comments</h3>
+  <% result.comments.forEach(function(c){ %>
+    <div>
+      <p><%= c.content %></p>
+      <em>
+        -<%= c.name %> (<%= moment(c.createdAt).calendar() %>)
+      </em>
+    </div>
+    <br>
+  <% }); %>
+<% } else { %>
+  <h3>Be the first to comment on this article</h3>
+<% } %>

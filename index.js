@@ -20,6 +20,7 @@ app.use(function(req, res, next){
 app.use('/articles', require('./controllers/articles.js'));
 app.use('/authors', require('./controllers/authors.js'));
 app.use('/comments', require('./controllers/comments.js'));
+app.use('/tags', require('./controllers/tags.js'));
 
 //Routes
 app.get('/', function(req, res){
